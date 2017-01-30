@@ -6,7 +6,7 @@ git client
 
 Build Instructions:
 Unzip cuademo.zip. 
-Alternativly clone the project from the get repo:
+Alternativly clone the project from the git repo:
 git clone https://github.com/mamontgo/cuademo.git
 
 
@@ -16,7 +16,7 @@ mvn clean install
 To run web application:
 mvn spring-boot:run
 
-to test web application:
+To test web application:
 1) call rest end point to encode
 http://localhost:8080/encoded?payload=Encode
 

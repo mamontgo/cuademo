@@ -2,7 +2,8 @@ Design Details
 
 The cuademo web application is a spring boot application with 2 restfull endpoints to encode and decode a string based on requirements as specified.
 
-The application contains a services layer and a controller layer.  
+The application contains a services layer and a controller layer.   This is contained in a single maven project. In normal commercial circumstances I would consider splitting services and controllers into seperate projects, and perhaps even a common utils project also with a parent maven project.  For simplicity and time constraints I have opted for a single project.
+
 The services layer contains a number of services some that contain unit tests, and others that are tested with spring boot integration tests.
 Ideally I would of liked additional unit tests using a mocking framework, however in the time available I have opted to rely on whatever could be unit tested easily and for the rest I relied in integration tests.
 There should be sufficient coverage of the code.
@@ -13,9 +14,9 @@ The Restfull services are HTTP gets.  This seemed the best fit to express the se
 
 I have used a singleton (CharacterPositionMapEnum) to provide a series of maps to map character to indexes, and indexes to characters.   
 I created a service CharacterPositionService to encode/decode a single character with an offset and this is referenced in the 2 other services created DecoderService & EncoderService.
-These 3 services could of easily been combined in a single service, and potentially would of provided a simpler solution, however I find the temptation to over engineer these types of tests irresistible. 
+These 3 services could of easily been combined in a single service, and potentially would of provided a simpler solution, however I find the temptation to over engineer these types of tasks irresistible. 
 
-I did combine both end points in a single controller.
+I did combine both end points in a single controller however.
 
 All uppercase and lowercase characers are encoded/decoded.  Any non-alpha characters simply return the input unchanged as the output.
 

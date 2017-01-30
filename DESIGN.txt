@@ -1,0 +1,26 @@
+Design Details
+
+The cuademo web application is a spring boot application with 2 restfull endpoints to encode and decode a string based on requirements as specified.
+
+The application contains a services layer and a controller layer.  
+The services layer contains a number of services some that contain unit tests, and others that are tested with spring boot integration tests.
+Ideally I would of liked additional unit tests using a mocking framework, however in the time available I have opted to rely on whatever could be unit tested easily and for the rest I relied in integration tests.
+There should be sufficient coverage of the code.
+
+The 2 restfull endpoints take a single query parameter (payload=abc) and return a basic json response with a data element.  I considered using a json payload for the restfull payload but opted for the query parameter for the sake of being able to easily test the services in a browser.
+
+The Restfull services are HTTP gets.  This seemed the best fit to express the services restfully.
+
+I have used a singleton (CharacterPositionMapEnum) to provide a series of maps to map character to indexes, and indexes to characters.   
+I created a service CharacterPositionService to encode/decode a single character with an offset and this is referenced in the 2 other services created DecoderService & EncoderService.
+These 3 services could of easily been combined in a single service, and potentially would of provided a simpler solution, however I find the temptation to over engineer these types of tests irresistible. 
+
+I did combine both end points in a single controller.
+
+All uppercase and lowercase characers are encoded/decoded.  Any non-alpha characters simply return the input unchanged as the output.
+
+Potentially some additional work removing some duplicate/similar code could be achieved, and perhaps more code comments would be ideal if time was permitting.
+
+I am satisfied that the application works as per requirements.
+
+
